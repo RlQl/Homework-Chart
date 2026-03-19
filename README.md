@@ -1,19 +1,24 @@
-# README
+# MedChart
 
-## About
+本项目严格遵循软件开发标准流程，实现医疗时序数据分析与可视化。
 
-This is the official Wails React-TS template.
+## 技术栈选型
+- **后端**：Go (处理底层二进制解析、高频并发模拟、LTTB 数据降采样)
+- **前端**：React + TypeScript + Vite (UI 交互与状态管理)
+- **可视化**：Apache ECharts (Canvas 高性能波形渲染、DataZoom 交互)
+- **桌面框架**：Wails v2 (提供原生系统能力与高效 IPC 通信)
+- **工程化**：GitHub CI/CD (自动化构建与测试)、严格的分层架构设计
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+## 工程结构
+- `/core`：核心业务逻辑（独立纯 Go 代码，负责解析与算法，完全覆盖单元测试）
+- `/docs`：构造管理文档（需求说明、架构评估、源码结构、测试报告）
+- `/frontend`：前端工程目录
+- `app.go` / `main.go`：Wails 进程与生命周期入口
 
-## Live Development
+## 快速启动
+```bash
+# 开发模式热重载
+wails dev
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
-
-## Building
-
-To build a redistributable, production mode package, use `wails build`.
+# 编译独立可执行文件
+wails build
